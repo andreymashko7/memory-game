@@ -1,1 +1,1 @@
-# memory-game
+# memory-pair game
