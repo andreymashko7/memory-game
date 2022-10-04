@@ -37,9 +37,10 @@ function createCardsMarcup(cards) {
 }
 
 const rootRef = document.querySelector(".cards-deck");
-const cardsRef = document.querySelectorAll(".card-flip");
 rootRef.addEventListener("click", selectCardOpen);
+
 startPlay();
+const cardsRef = document.querySelectorAll(".card-flip");
 
 function startPlay() {
 	pairs.length = 0;
@@ -48,11 +49,14 @@ function startPlay() {
 }
 
 function selectCardOpen(event) {
-	if (event.target.nodeName !== "IMG") {
+	if (
+		event.target.nodeName !== "IMG" ||
+		event.target.classList.contains("active")
+	) {
 		return;
 	}
-	const cardId = event.target.closest("div[data-card]");
 
+	const cardId = event.target.closest("div[data-card]");
 	if (cardId) {
 		openCards.push(cardId);
 	}
